@@ -14,7 +14,8 @@ RUN apt-get update && apt-get install -y \
     qemu-system-x86 \
     g++ \
     vim \
-    curl
+    curl \
+    perl
 
 # Copiar el código fuente de xv6 al contenedor
 COPY xv6-public /xv6
@@ -22,8 +23,14 @@ COPY xv6-public /xv6
 # Configurar el directorio de trabajo
 WORKDIR /xv6
 
+# Dar permisos de ejecución a los scripts
+RUN chmod +x sign.pl
+
+# Modificar el Makefile para llamar a perl explícitamente
+RUN sed -i 's|./sign.pl|perl sign.pl|g' Makefile
+
 # Comando para compilar xv6
 RUN make
 
 # Comando por defecto para ejecutar xv6 con QEMU
-CMD ["make", "qemu"]
+CMD ["make", "qemu-nox"]
