@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y \
     curl
 
 # Copiar el código fuente de xv6 al contenedor
-COPY . /xv6
+COPY xv6-public /xv6
 
 # Configurar el directorio de trabajo
 WORKDIR /xv6
