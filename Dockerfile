@@ -20,5 +20,9 @@ RUN apt-get update && apt-get install -y \
 # Configurar el directorio de trabajo
 WORKDIR /xv6
 
+# Copiar el código fuente de xv6 (xv6-public) al contenedor
+COPY xv6-public /xv6
+
+
 # Comando por defecto para ejecutar xv6 con QEMU
 CMD ["make", "qemu-nox"]

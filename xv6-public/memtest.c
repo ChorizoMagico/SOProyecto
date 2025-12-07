@@ -226,7 +226,7 @@ test_stress(void)
 {
   char *pages[MAX_CONCURRENT];
   int start_time, end_time;
-  int i, j;
+  int i;
   int total_allocs = 0;
   int total_frees = 0;
   int failed_allocs = 0;
