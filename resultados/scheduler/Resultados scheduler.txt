@@ -1,0 +1,140 @@
+### Algoritmo original de xv6: Round Robin con quantum de 10 ms.
+
+
+SeaBIOS (version 1.13.0-1ubuntu1.1)
+
+
+iPXE (http://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8CA10+1FECCA10 CA00
+
+
+
+Booting from Hard Disk...
+xv6...
+cpu1: starting 1
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ schedtest
+
+========================================
+PRUEBA DE SCHEDULER - xv6
+========================================
+Esta prueba crea multiples procesos:
+- 2 procesos CPU-bound (intensivos)
+- 3 procesos I/O-bound (interactivos)
+- 2 procesos mixtos
+
+EXPECTATIVAS:
+Round-Robin: Todos completan ~mismo tiempo
+MLFQ: I/O-bound completan MUCHO mas rapido
+========================================
+
+Iniciando prueba en tick 1389
+
+[CPU-1] Iniciado en tick 1390
+[CPU-2] Inicia[do e[II/O-2] Iniciado en tick 1392
+[I/O-3] Iniciado en tick 1392
+[MIX-1] Ini
+Esperando a que todos los procesos terminen...n
+/O-1] Iniciado en tick 1392
+ciado en ti t[MIX-2] Iniciado en tick 1395
+
+ck 1ick 1392
+393
+[I/O-2] Finalizado e[I/O-1] Finalizado en tick 1493 (dn tick 1492 (duración: 100 ticks)
+[I/Ouración: 101 ticks)
+-3] Finalizado en tick 1494 (duración: 102 ticks)
+[CPU-1] Finalizado en tick 2020 (duración: 630 ticks)
+[CPU-2] Finalizado en tick 2025 (duración: 633 ticks)
+[MIX-2] Finalizado en tick 2026 (duración: 631 ticks)
+[MIX-1] Finalizado en tick 2069 (duración: 676 ticks)
+
+========================================
+RESULTADOS DE LA PRUEBA
+========================================
+Tiempo total de prueba: 681 ticks
+
+INTERPRETACION:
+----------------------------------------
+Round-Robin:
+  - Todos los procesos tardan similar
+  - I/O-bound sufren latencia alta
+  - Tiempo total: MAYOR
+
+MLFQ (2 colas):
+  - I/O-bound completan RAPIDO
+  - CPU-bound completan despues
+  - Tiempo total: MENOR
+  - Mejor respuesta interactiva
+========================================
+
+##### Resultados nuevo algoritmo: MLFQ Con dos colas: Una de 50 ms y otra indefinida
+
+
+SeaBIOS (version 1.13.0-1ubuntu1.1)
+
+
+iPXE (http://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8CA10+1FECCA10 CA00
+
+
+
+Booting from Hard Disk..xv6...
+cpu1: starting 1
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ schedtest
+
+========================================
+PRUEBA DE SCHEDULER - xv6
+========================================
+Esta prueba crea multiples procesos:
+- 2 procesos CPU-bound (intensivos)
+- 3 procesos I/O-bound (interactivos)
+- 2 procesos mixtos
+
+EXPECTATIVAS:
+Round-Robin: Todos completan ~mismo tiempo
+MLFQ: I/O-bound completan MUCHO mas rapido
+========================================
+
+Iniciando prueba en tick 343
+
+[CPU-1] Iniciado en tick 344
+[CPU-2] Iniciado en tick 345
+
+Esperando a que todos los procesos terminen...
+
+[I/O-1] Iniciado en tick 351
+[I/O-2] Iniciado en tick 351
+[I/O-1] Finalizado en tick 401 (duración: 50 ticks)
+[I/O-2] Finalizado en tick 402 (duración: 51 ticks)
+[I/[MIX-1] Iniciado en tick 404
+O-3] Iniciado en tick 403
+[MIX-2] Iniciado en tick 414
+[I/O-3] Finalizado en tick 455 (duración: 52 ticks)
+[CPU-1] Finalizado en tick 679 (duración: 335 ticks)
+[CPU-2] Finalizado en tick 699 (duración: 354 ticks)
+[MIX-1] Finalizado en tick 990 (duración: 586 ticks)
+[MIX-2] Finalizado en tick 1010 (duración: 596 ticks)
+
+========================================
+RESULTADOS DE LA PRUEBA
+========================================
+Tiempo total de prueba: 668 ticks
+
+INTERPRETACION:
+----------------------------------------
+Round-Robin:
+  - Todos los procesos tardan similar
+  - I/O-bound sufren latencia alta
+  - Tiempo total: MAYOR
+
+MLFQ (2 colas):
+  - I/O-bound completan RAPIDO
+  - CPU-bound completan despues
+  - Tiempo total: MENOR
+  - Mejor respuesta interactiva
+========================================
+
+$

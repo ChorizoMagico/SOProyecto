@@ -1,0 +1,35 @@
+# Proyecto xv6 - Scheduler MLFQ
+
+## Requisitos
+- Docker Desktop instalado
+- Windows 10/11 o Linux
+
+## Opción 1: Ejecución Rápida (Archivos .bat)
+```bash
+# 1. Build imagen base (solo una vez)
+docker build -t xv6-test .
+
+# 2. Ejecutar pruebas
+test-normal.bat    # xv6 Round-Robin
+test-mlfq.bat      # xv6 MLFQ
+```
+
+## Opción 2: Imágenes Standalone
+```bash
+# 1. Build imágenes
+docker build --no-cache -t xv6-normal -f Dockerfile.normal .
+docker build --no-cache -t xv6-mlfq -f Dockerfile.mlfq .
+
+# 2. Ejecutar
+docker run --rm -it xv6-normal
+docker run --rm -it xv6-mlfq
+```
+
+## Dentro de xv6
+```bash
+$ schedtest    # Ejecutar prueba de scheduler
+$ ls           # Ver programas disponibles
+```
+
+## Salir
+- Presionar `Ctrl+A`, luego `X`
