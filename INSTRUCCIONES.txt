@@ -10,24 +10,28 @@
 docker build -t xv6-test .
 
 # 2. Ejecutar pruebas
-test-normal.bat    # xv6 Round-Robin
+test-normal.bat    # xv6 Round-Robin (Original)
 test-mlfq.bat      # xv6 MLFQ
+test-mem-normal.bat #xv6 Asignación de memoria First Fit (Original)
+test-mem-bestfit.bat #xv6 Asignación de memoria Best Fit
+
 ```
 
 ## Opción 2: Imágenes Standalone
 ```bash
 # 1. Build imágenes
 docker build --no-cache -t xv6-normal -f Dockerfile.normal .
-docker build --no-cache -t xv6-mlfq -f Dockerfile.mlfq .
+docker build --no-cache -t xv6-mlfq -f Dockerfile.modif .
 
 # 2. Ejecutar
 docker run --rm -it xv6-normal
-docker run --rm -it xv6-mlfq
+docker run --rm -it xv6-modif
 ```
 
 ## Dentro de xv6
 ```bash
 $ schedtest    # Ejecutar prueba de scheduler
+$ memtest      # Ejecutar prueba de memoria
 $ ls           # Ver programas disponibles
 ```
 
