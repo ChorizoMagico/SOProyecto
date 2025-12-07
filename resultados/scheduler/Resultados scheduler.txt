@@ -1,6 +1,7 @@
 ### Algoritmo original de xv6: Round Robin con quantum de 10 ms.
 
 
+
 SeaBIOS (version 1.13.0-1ubuntu1.1)
 
 
@@ -8,8 +9,7 @@ iPXE (http://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8CA10+1FECCA10 CA00
 
 
 
-Booting from Hard Disk...
-xv6...
+Booting from Hard Disk..xv6...
 cpu1: starting 1
 cpu0: starting 0
 sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
@@ -29,30 +29,30 @@ Round-Robin: Todos completan ~mismo tiempo
 MLFQ: I/O-bound completan MUCHO mas rapido
 ========================================
 
-Iniciando prueba en tick 1389
+Iniciando prueba en tick 321
 
-[CPU-1] Iniciado en tick 1390
-[CPU-2] Inicia[do e[II/O-2] Iniciado en tick 1392
-[I/O-3] Iniciado en tick 1392
-[MIX-1] Ini
-Esperando a que todos los procesos terminen...n
-/O-1] Iniciado en tick 1392
-ciado en ti t[MIX-2] Iniciado en tick 1395
+[CPU-1] Iniciado en tick 323
+[CPU-2] Iniciado en tick 324
+[I/O-1] Iniciado en tick 325
+[I/O-2] Iniciado en tick 325
 
-ck 1ick 1392
-393
-[I/O-2] Finalizado e[I/O-1] Finalizado en tick 1493 (dn tick 1492 (duración: 100 ticks)
-[I/Ouración: 101 ticks)
--3] Finalizado en tick 1494 (duración: 102 ticks)
-[CPU-1] Finalizado en tick 2020 (duración: 630 ticks)
-[CPU-2] Finalizado en tick 2025 (duración: 633 ticks)
-[MIX-2] Finalizado en tick 2026 (duración: 631 ticks)
-[MIX-1] Finalizado en tick 2069 (duración: 676 ticks)
+Esperando a que todos los[ I/O-3] Iniciado en tick 326
+[MIX-1] Iniciado e[MIX-2] Iniciado en tick 327
+procesos terminen...
+
+n tick 327
+[I/O-1] Finalizado en tick 424 (duración: 99 ticks)
+[I/O-2] Finalizado en tick 427 (duración: 102 tick[I/O-3] Finalizado en tick 428 (duración: 102 ticks)
+s)
+[CPU-2] Finalizado en tick 940 (duración: 616 ticks)
+[CPU-1] Finalizado en tick 945 (duración: 622 ticks)
+[MIX-2] Finalizado en tick 960 (duración: 633 ticks)
+[MIX-1] Finalizado en tick 993 (duración: 666 ticks)
 
 ========================================
 RESULTADOS DE LA PRUEBA
 ========================================
-Tiempo total de prueba: 681 ticks
+Tiempo total de prueba: 673 ticks
 
 INTERPRETACION:
 ----------------------------------------
@@ -67,6 +67,7 @@ MLFQ (2 colas):
   - Tiempo total: MENOR
   - Mejor respuesta interactiva
 ========================================
+
 
 ##### Resultados nuevo algoritmo: MLFQ Con dos colas: Una de 50 ms y otra indefinida
 
