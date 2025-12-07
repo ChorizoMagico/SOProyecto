@@ -1,0 +1,243 @@
+##### Sin algoritmo (Versión original)
+
+Booting from Hard Disk..xv6...
+cpu1: starting 1
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ memtest
+
+================================================
+    SUITE DE PRUEBAS DE MEMORIA - xv6
+================================================
+
+Esta suite compara el rendimiento de:
+  - FREELIST (original): First Fit simple
+  - BST BEST FIT: Arbol binario con Best Fit
+
+Ejecutando 4 pruebas diferentes...
+================================================
+
+========================================
+PRUEBA 1: ASIGNACION SECUENCIAL
+========================================
+Asignando 50 paginas secuencialmente...
+Asignaciones exitosas: 50/50
+Tiempo de asignacion: 0 ticks
+
+Verificando integridad de memoria...
+Errores de verificacion: 0
+
+Liberando memoria...
+Tiempo de liberacion: 0 ticks
+
+RESUMEN PRUEBA 1:
+  Asignacion: 0 ticks (0 ticks/pagina)
+  Liberacion: 0 ticks (0 ticks/pagina)
+  Total: 0 ticks
+========================================
+
+========================================
+PRUEBA 2: PATRON ALTERNADO
+========================================
+Probando fragmentacion de memoria...
+Fase 1: 30 bloques asignados
+Fase 2: 15 bloques liberados (impares)
+Fase 3: 15 bloques reasignados
+
+Verificando integridad...
+Bloques verificados correctamente: 23
+
+RESUMEN PRUEBA 2:
+  Tiempo total: 5 ticks
+  Operaciones exitosas: asignar=30, reasignar=15
+========================================
+
+========================================
+PRUEBA 3: ESTRES DE MEMORIA
+========================================
+Realizando 100 iteraciones de asignar/liberar...
+  Iteracion 20: asignadas=14 liberadas=2
+  Iteracion 40: asignadas=23 liberadas=9
+  Iteracion 60: asignadas=30 liberadas=15
+  Iteracion 80: asignadas=37 liberadas=22
+
+RESUMEN PRUEBA 3:
+  Tiempo total: 5 ticks
+  Tiempo promedio por iteracion: 0 ticks
+  Asignaciones exitosas: 43
+  Asignaciones fallidas: 0
+  Liberaciones: 28
+  Bloques no liberados: 15
+========================================
+
+========================================
+PRUEBA 4: MULTIPLE PROCESOS
+========================================
+Creando 3 procesos que asignan memoria simultaneamente...
+[HIJO-1] Iniciando...
+[HIJO-2] Iniciando...
+[HIJO-3] Iniciando...
+[HIJO-1] Asignaciones: 15/15
+[HIJO-1] Verificaciones[H IOKJ:O -15/2]1 A5sig
+naciones: 15/15
+[H[IHIJJOO--21] ]Ver[H IifJO-3Fii] cnaAcionaes OKslii: zadg1on5a
+/1ci5
+ones: 15/[H15I
+JO-2] Finaliza[dHo
+IJO-3] Verificaciones OK: 15/15
+[HIJO-3] Finalizado
+
+RESUMEN PRUEBA 4:
+  Tiempo total: 20 ticks
+  Todos los procesos completados
+========================================
+
+================================================
+    RESUMEN FINAL
+================================================
+Tiempo total de todas las pruebas: 102 ticks
+
+INTERPRETACION:
+------------------------------------------------
+FREELIST (original):
+  + Mas rapido en asignaciones simples
+  - Fragmentacion externa alta
+  - Busqueda lineal O(n)
+
+BST BEST FIT (modificado):
+  + Reduce fragmentacion externa
+  + Busqueda logaritmica O(log n)
+  + Mejor con cargas fragmentadas
+  - Overhead de arbol
+================================================
+
+
+
+
+
+
+
+######### Algoritmo de asignación de memoria con Best First
+
+
+SeaBIOS (version 1.13.0-1ubuntu1.1)
+
+
+iPXE (http://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF8CA10+1FECCA10 CA00
+
+
+
+Booting from Hard Disk..xv6...
+cpu1: starting 1
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ memtest
+
+================================================
+    SUITE DE PRUEBAS DE MEMORIA - xv6
+================================================
+
+Esta suite compara el rendimiento de:
+  - FREELIST (original): First Fit simple
+  - BST BEST FIT: Arbol binario con Best Fit
+
+Ejecutando 4 pruebas diferentes...
+================================================
+
+========================================
+PRUEBA 1: ASIGNACION SECUENCIAL
+========================================
+Asignando 50 paginas secuencialmente...
+Asignaciones exitosas: 50/50
+Tiempo de asignacion: 70 ticks
+
+Verificando integridad de memoria...
+Errores de verificacion: 0
+
+Liberando memoria...
+Tiempo de liberacion: 1 ticks
+
+RESUMEN PRUEBA 1:
+  Asignacion: 70 ticks (1 ticks/pagina)
+  Liberacion: 1 ticks (0 ticks/pagina)
+  Total: 71 ticks
+========================================
+
+========================================
+PRUEBA 2: PATRON ALTERNADO
+========================================
+Probando fragmentacion de memoria...
+Fase 1: 30 bloques asignados
+Fase 2: 15 bloques liberados (impares)
+Fase 3: 15 bloques reasignados
+
+Verificando integridad...
+Bloques verificados correctamente: 23
+
+RESUMEN PRUEBA 2:
+  Tiempo total: 71 ticks
+  Operaciones exitosas: asignar=30, reasignar=15
+========================================
+
+========================================
+PRUEBA 3: ESTRES DE MEMORIA
+========================================
+Realizando 100 iteraciones de asignar/liberar...
+  Iteracion 20: asignadas=14 liberadas=2
+  Iteracion 40: asignadas=23 liberadas=9
+  Iteracion 60: asignadas=30 liberadas=15
+  Iteracion 80: asignadas=37 liberadas=22
+
+RESUMEN PRUEBA 3:
+  Tiempo total: 65 ticks
+  Tiempo promedio por iteracion: 0 ticks
+  Asignaciones exitosas: 43
+  Asignaciones fallidas: 0
+  Liberaciones: 28
+  Bloques no liberados: 15
+========================================
+
+========================================
+PRUEBA 4: MULTIPLE PROCESOS
+========================================
+Creando 3 procesos que asignan memoria simultaneamente...
+[HIJO-1] Iniciando...
+[HIJO-1] Asignaciones: 15/15
+[HIJO-1] Verificaciones OK: 15/15
+[HIJO-1] Finalizado
+[HIJO-2] Iniciando...
+[HIJO-2] Asignaciones: 15/15
+[HIJO-2] Verificaciones OK: 15/15
+[HIJO-2] Finalizado
+[HIJO-3] Iniciando...
+[HIJO-3] Asignaciones: 15/15
+[HIJO-3] Verificaciones OK: 15/15
+[HIJO-3] Finalizado
+
+RESUMEN PRUEBA 4:
+  Tiempo total: 333 ticks
+  Todos los procesos completados
+========================================
+
+================================================
+    RESUMEN FINAL
+================================================
+Tiempo total de todas las pruebas: 620 ticks
+
+INTERPRETACION:
+------------------------------------------------
+FREELIST (original):
+  + Mas rapido en asignaciones simples
+  - Fragmentacion externa alta
+  - Busqueda lineal O(n)
+
+BST BEST FIT (modificado):
+  + Reduce fragmentacion externa
+  + Busqueda logaritmica O(log n)
+  + Mejor con cargas fragmentadas
+  - Overhead de arbol
+================================================
+
+$
