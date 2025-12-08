@@ -21,7 +21,7 @@ test-mem-bestfit.bat #xv6 Asignación de memoria Best Fit
 ```bash
 # 1. Build imágenes
 docker build --no-cache -t xv6-normal -f Dockerfile.normal .
-docker build --no-cache -t xv6-mlfq -f Dockerfile.modif .
+docker build --no-cache -t xv6-modif -f Dockerfile.modif .
 
 # 2. Ejecutar
 docker run --rm -it xv6-normal
